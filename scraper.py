@@ -10,8 +10,13 @@ def fetch_page(url):
 
 
 
-if __name__ =="__main__":
-    url="https://www.linkedin.com/jobs/view/4338837519"
-    html=fetch_page(url)
-    parser=LinkedInParser(html)
-    print("Title", parser.title())
+if __name__ == "__main__":
+    url = "https://www.linkedin.com/jobs/view/4338837519"
+    html = fetch_page(url)
+
+    parser = LinkedInParser(html)
+    print("Title:   ", parser.title())
+    print("Company: ", parser.company())
+    print("Location:", parser.location())
+    desc = parser.description()
+    print("Description (first 800 chars):\n", (desc[:800] + "...") if desc else "No description found")
